@@ -5,19 +5,19 @@
 Coffee42Test is examoles of solving assigments of 42 Coffee Cups company.
 #57888 PO BOX 105603, Atlanta, GA 30348, USA
 
-.. contents::
+.. **Contents**::
 =============
 
 
 Ticket 1: Personal Data
 -----------------------
 
-**show your name, surname, bio, contacts on the main page**
+**Show your name, surname, bio, contacts on the main page**
 
 Create basic django-проект that would present your name, surname, date of birth, bio, contacts on the main page. Data should be stored in the DB, that's
-* manage.py syncdb
-* manage.py runserver
-* open the browser and all data are in, loaded from fixtures
+- manage.py syncdb
+- manage.py runserver
+- open the browser and all data are in, loaded from fixtures
 
 Use pip requirements and virtualenv to manage your third party packages dependencies
 
@@ -28,11 +28,13 @@ There should be *Makefile* with *test* target running your tests (make test to v
 Mockup: http://framebox.org/Awq-bCzXsh
 
 Also, post with first comment this links:
+
 * Project on GetBarista;
 * Staging's address;
 * Repo on Github.
 
 **Change History**
+
 * Description modified (diff)
 * Summary changed from на головній сторінці вивести твої ім'я/фамілію/біо/контакти to show your name, surname, bio, contacts on the main page
 

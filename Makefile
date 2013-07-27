@@ -17,3 +17,4 @@ run:
 
 syncdb:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=coffe42cups.settings $(MANAGE) syncdb --noinput --migrate
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=coffe42cups.settings $(MANAGE) loaddata apps/chamber/fixtures/sir.json
