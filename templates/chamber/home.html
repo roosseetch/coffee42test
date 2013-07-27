@@ -2,21 +2,25 @@
 
 {% block title %}Members of the House{% endblock %}
 {% block content %}
+<div class="well well-small">
 <div class="page-header">
+<div class="col-lg-1">
+</div>
   <h1>42 Coffee Cups Test Assignment <small>Home Page</small></h1>
 </div>
+</div>
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span2">
+<div class="container">
+	<div class="form-horizontal form-group row">
+		<div class="col-lg-2">
 			<!--Sidebar content-->
-			<ul class="unstyled">
+			{# <ul class="unstyled"> #}
 				{# <li><i class="icon-user"></i><a href="{% url 'login' %}"><b> Login</b></a></li> #}
 				{# <li><i class="icon-list-alt"></i><a href="{% url 'request' %}"> Requests Content</a></li> #}
-			</ul>
+			{# </ul> #}
 			<!--Sidebar content-->
 		</div>
-		<div class="span10">
+		<div class="col-lg-10">
 			<!--Body content-->
 			<table class="table table-striped">
 				<caption><h3> Members of the House </h3></caption>
@@ -34,10 +38,11 @@
 					{% for sir in object_list %}
 					<tr>
 						<td>
+							{% comment %}
 							<ul class="thumbnails">
 								<li class="span12">
 									<div class="thumbnail right-caption span12">
-										{# <img src="{{ sir.photo.url }}" class="img-polaroid" alt="140&#215;140" > #}
+										{# <img src="{{ sir.photo.url }}" class="img-thumbnail" alt="140&#215;140" > #}
 										<div class="caption">
 											<h5>{{ sir.name }} {{ sir.surname }} </h5>
 											<p><h6> {{ sir.date_birth }} </h6></p>
@@ -47,6 +52,20 @@
 									</div>
 									</li>
 									</ul>
+									{% endcomment %}
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="thumbnail">
+												{# <img data-src="holder.js/300x200" alt=""> #}
+												<div class="caption">
+													<h4>{{ sir.name }} {{ sir.surname }} </h4>
+													<p><h5> {{ sir.date_birth }} </h5></p>
+													<p><h5> {{ sir.contact }} </h5></p>
+													{# <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn btn-default">Action</a></p> #}
+												</div>
+											</div>
+										</div>
+									</div>
 								</td>
 								<td>{{ sir.bio }}</td>
 							</tr>
