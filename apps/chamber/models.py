@@ -15,4 +15,4 @@ class Sir(models.Model):
 	contact = models.TextField('contact', max_length=255)
 
 	def __str__(self):
-		return u"Person`s presentation {} {}".format(self.name, self.surname)
+		return ' '.join([self.name, self.surname])

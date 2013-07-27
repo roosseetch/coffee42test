@@ -1,16 +1,54 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
 from django.test import TestCase
+from django.db.models import get_model
+from django.test.client import Client
+from django.test.client import RequestFactory
+
+from .views import SirListView
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+Sir = get_model('chamber', 'Sir')
+
+
+class SirModelTests(TestCase):
+	"""
+	Sir model tests.
+	"""
+
+	def test_str(self):
+		sir = Sir(name='John', surname='Smith')
+		self.assertEqual(str(sir), 'John Smith')
+
+
+class SirListViewTests(TestCase):
+	"""
+	Sir list view tests.
+	"""
+
+	def test_sir_in_the_context(self):
+
+		client = Client()
+		response = client.get('/')
+
+		self.assertEqual(list(response.context['object_list']), [])
+
+		Sir.objects.create(name='John', surname='Smith', date_birth='2000-10-10')
+		response = client.get('/')
+		self.assertEqual(response.context['object_list'].count(), 1)
+
+	def test_sir_in_the_context_request_factory(self):
+		'''
+		Test the same as in function test_sir_in_the_context, but instead of Client()
+		using RequestFactory().
+		Note that RequestFactory() tests faster then Client()
+		'''
+
+		factory = RequestFactory()
+		request = factory.get('/')
+
+		response = SirListView.as_view()(request)
+
+		self.assertEqual(list(response.context_data['object_list']), [])
+
+		Sir.objects.create(name='John', surname='Smith', date_birth='2000-10-10')
+		response = SirListView.as_view()(request)
+		self.assertEqual(response.context_data['object_list'].count(), 1)

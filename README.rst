@@ -15,6 +15,7 @@ Ticket 1: Personal Data
 **Show your name, surname, bio, contacts on the main page**
 
 Create basic django-проект that would present your name, surname, date of birth, bio, contacts on the main page. Data should be stored in the DB, that's
+
 * manage.py syncdb
 * manage.py runserver
 * open the browser and all data are in, loaded from fixtures
@@ -38,12 +39,11 @@ Also, post with first comment this links:
 * Description modified (diff)
 * Summary changed from на головній сторінці вивести твої ім'я/фамілію/біо/контакти to show your name, surname, bio, contacts on the main page
 
-Corresponding branch name: t1_personal_data
+Corresponding branch name:   t1_personal_data
 
 
 Ticket 2: (Merged to ticket 1)
-------------------------------
-
+``````````````````````````````
 
 Ticket 3: Middleware
 --------------------
