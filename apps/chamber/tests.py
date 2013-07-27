@@ -18,6 +18,16 @@ class SirModelTests(TestCase):
 		sir = Sir(name='John', surname='Smith')
 		self.assertEqual(str(sir), 'John Smith')
 
+	def test_correct_template_render(self):
+		"""
+		Test that correct template rendered
+		"""
+		client = Client()
+		response = client.get('/')
+		self.assertEqual(response.status_code, 200)
+		self.assertContains(response, '<!DOCTYPE html>')
+		self.assertTemplateUsed(response, 'chamber/home.html')
+
 
 class SirListViewTests(TestCase):
 	"""

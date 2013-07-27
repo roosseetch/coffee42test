@@ -39,7 +39,7 @@ Also, post with first comment this links:
 * Description modified (diff)
 * Summary changed from на головній сторінці вивести твої ім'я/фамілію/біо/контакти to show your name, surname, bio, contacts on the main page
 
-Corresponding branch name:   t1_personal_data
+# Corresponding branch name:   t1_persona_data
 
 
 Ticket 2: (Merged to ticket 1)
@@ -54,4 +54,5 @@ Also, on a separate page show first 10 http requests that are stored by middlewa
 Mockup:  http://framebox.org/Awv-QVXKyN
 
 **Change History**
+
 * Summary changed from Зробити middleware що зберігає всі запити в базу to Зробити middleware що зберігає всі http запити в базу
