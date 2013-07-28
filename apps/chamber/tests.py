@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.db.models import get_model
 from django.test.client import Client
 from django.test.client import RequestFactory
+from django.conf import settings
 
 from .views import SirListView, RequestContetnView
 
@@ -65,7 +66,7 @@ class SirListViewTests(TestCase):
 		self.assertEqual(response.context_data['object_list'].count(), 1)
 
 
-class ChamberMiddlewareTest(TestCase):
+class ChamberMiddlewareTests(TestCase):
 
 	def test_request_data_collecting(self):
 		'''
@@ -111,3 +112,22 @@ class ChamberMiddlewareTest(TestCase):
 		self.assertEqual(response.status_code, 200)
 		self.assertContains(response, '<small>Requests Page</small></h1>')
 		self.assertTemplateUsed(response, 'chamber/request.html')
+
+
+class MemberContextProcessorsTest(TestCase):
+
+	def test_if_settings_in_context(self):
+		"""
+		Tests if coffee42test.settings in context
+		"""
+		# factory = RequestFactory()
+		# request = factory.get('/')
+
+		# response = SirListView.as_view()(request)
+		# self.assertEqual(response.context_data['coffee42test_settings'], settings)
+		# self.assertIn('coffee42test_settings', response.context_data)
+
+		client = Client()
+		response = client.get('/')
+		self.assertEqual(response.context['coffee42test_settings'], settings)
+		self.assertIn('coffee42test_settings', response.context)
