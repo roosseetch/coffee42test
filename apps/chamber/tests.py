@@ -1,8 +1,10 @@
+# -- coding: utf-8 --
 from django.test import TestCase
 from django.db.models import get_model
 from django.test.client import Client
 from django.test.client import RequestFactory
 from django.conf import settings
+from django.contrib.auth.models import User
 
 from .views import SirListView, RequestContetnView
 
@@ -11,11 +13,13 @@ Sir = get_model('chamber', 'Sir')
 RequestContent = get_model('chamber', 'RequestContent')
 
 
+usersir = User(username='username', password='password', pk=1)
+
+
 class SirModelTests(TestCase):
 	"""
 	Sir model tests.
 	"""
-
 	def test_str(self):
 		sir = Sir(name='John', surname='Smith')
 		self.assertEqual(str(sir), 'John Smith')
@@ -43,7 +47,7 @@ class SirListViewTests(TestCase):
 
 		self.assertEqual(list(response.context['object_list']), [])
 
-		Sir.objects.create(name='John', surname='Smith', date_birth='2000-10-10')
+		Sir.objects.create(name='John', surname='Smith', date_birth='2000-10-10', created_by=usersir)
 		response = client.get('/')
 		self.assertEqual(response.context['object_list'].count(), 1)
 
@@ -61,7 +65,7 @@ class SirListViewTests(TestCase):
 
 		self.assertEqual(list(response.context_data['object_list']), [])
 
-		Sir.objects.create(name='John', surname='Smith', date_birth='2000-10-10')
+		Sir.objects.create(name='John', surname='Smith', date_birth='2000-10-10', created_by=usersir)
 		response = SirListView.as_view()(request)
 		self.assertEqual(response.context_data['object_list'].count(), 1)
 
