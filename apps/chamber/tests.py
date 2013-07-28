@@ -12,8 +12,7 @@ from .views import SirListView, RequestContetnView
 Sir = get_model('chamber', 'Sir')
 RequestContent = get_model('chamber', 'RequestContent')
 
-
-usersir = User(username='username', password='password', pk=1)
+usersir = User(pk=3)
 
 
 class SirModelTests(TestCase):
