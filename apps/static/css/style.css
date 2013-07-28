@@ -1,0 +1,29 @@
+.btn-custom {
+  background-color: hsl(157, 57%, 25%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#52cf9f", endColorstr="#1b6448");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#52cf9f), to(#1b6448));
+  background-image: -moz-linear-gradient(top, #52cf9f, #1b6448);
+  background-image: -ms-linear-gradient(top, #52cf9f, #1b6448);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #52cf9f), color-stop(100%, #1b6448));
+  background-image: -webkit-linear-gradient(top, #52cf9f, #1b6448);
+  background-image: -o-linear-gradient(top, #52cf9f, #1b6448);
+  background-image: linear-gradient(#52cf9f, #1b6448);
+  border-color: #1b6448 #1b6448 hsl(157, 57%, 17%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.52);
+  -webkit-font-smoothing: antialiased;
+}
+
+.thumbnail.right-caption > img {
+    float: left;
+    margin-right: 9px;
+}
+
+.thumbnail.right-caption {
+    float: left;
+}
+
+.thumbnail.right-caption > .caption {
+    padding: 4px;
+}

@@ -1,5 +1,8 @@
 # -- coding: utf-8 --
+from django.conf import settings
 from django.db import models
+
+AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
 
 class Sir(models.Model):
@@ -13,6 +16,8 @@ class Sir(models.Model):
 	bio = models.TextField('bio', max_length=1000)
 	date_birth = models.DateField("Date of Birth")
 	contact = models.TextField('contact', max_length=255)
+	photo = models.ImageField(upload_to='photo', blank=True)
+	created_by = models.ForeignKey(AUTH_USER_MODEL)
 
 	def __str__(self):
 		return ' '.join([self.name, self.surname])

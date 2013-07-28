@@ -27,52 +27,37 @@
 				<thead>
 					<tr>
 						<th><center>Main</center></th>
-						{# <th>Name</th> #}
-						{# <th>Surname</th> #}
 						<th><center>Biography</center></th>
-						{# <th>Date of Birth</th> #}
-						{# <th>Contact</th> #}
 					</tr>
 				</thead>
 				<tbody>
 					{% for sir in object_list %}
 					<tr>
 						<td>
-							{% comment %}
-							<ul class="thumbnails">
-								<li class="span12">
-									<div class="thumbnail right-caption span12">
-										{# <img src="{{ sir.photo.url }}" class="img-thumbnail" alt="140&#215;140" > #}
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="thumbnail right-caption col-lg-12">
+										{% if sir.photo %}
+										<img src="{{ sir.photo.url }}" class="img-thumbnail">
+										{% else %}
+										<img src="" class="img-thumbnail" alt="140&#215;140" >
+										{% endif %}
 										<div class="caption">
-											<h5>{{ sir.name }} {{ sir.surname }} </h5>
-											<p><h6> {{ sir.date_birth }} </h6></p>
-											<p><h6> {{ sir.contact }} </h6></p>
-											{# <p><a class="btn btn-primary btn-small btn-custom" href="/edit/{{ sir.pk }}"><i class="icon-edit"></i> Edit sir</a></p> #}
+											<h4>{{ sir.name }} {{ sir.surname }} </h4>
+											<p><h5> {{ sir.date_birth }} </h5></p>
+											<p><h5> {{ sir.contact }} </h5></p>
+											<p><a class="btn btn-primary btn-small btn-custom" href="/edit/{{ sir.pk }}"><span class="glyphicon glyphicon-edit"></span> Edit Sir`s Data</a></p>
 										</div>
 									</div>
-									</li>
-									</ul>
-									{% endcomment %}
-									<div class="row">
-										<div class="col-lg-12">
-											<div class="thumbnail">
-												{# <img data-src="holder.js/300x200" alt=""> #}
-												<div class="caption">
-													<h4>{{ sir.name }} {{ sir.surname }} </h4>
-													<p><h5> {{ sir.date_birth }} </h5></p>
-													<p><h5> {{ sir.contact }} </h5></p>
-													{# <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn btn-default">Action</a></p> #}
-												</div>
-											</div>
-										</div>
-									</div>
-								</td>
-								<td>{{ sir.bio }}</td>
-							</tr>
-							{% empty %}
-							<p>No people</p>
-							{% endfor %}
-						</tbody>
+								</div>
+							</div>
+						</td>
+						<td>{{ sir.bio }}</td>
+					</tr>
+					{% empty %}
+					<p>No people</p>
+					{% endfor %}
+				</tbody>
 			</table>
 			<!--Body content-->
 		</div>

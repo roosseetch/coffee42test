@@ -71,6 +71,8 @@ Ticket 4: Context Processor
 
 * Summary changed from створити template context processor який додає django.settings в контекст to Create template-context-processor that adds django.settings to the context.
 
+Corresponding branch name:   t4_context_processor
+
 
 Ticket 5: Form
 ---------------
@@ -94,6 +96,8 @@ Mockups:
 
 * Description modified (diff)
 * Summary changed from створити сторінку з формою де можна редагувати дані to Create page with a form that allows to edit data, presented on the main page
+
+Corresponding branch name:   t5_form
 
 
 Ticket 6: Widget

@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 from apps.chamber.views import (
 							SirListView,
-							# SirUpdateView,
+							SirUpdateView,
 							RequestContetnView,
 						)
 
@@ -17,7 +17,7 @@ urlpatterns = patterns('',
 	# Examples:
 	url(r'^$', SirListView.as_view(), name='home'),
 	url(r'^request/$', RequestContetnView.as_view(), name='request'),
-	# url(r'^edit/(?P<pk>\d+)/$', SirUpdateView.as_view(), name='edit'),
+	url(r'^edit/(?P<pk>\d+)/$', SirUpdateView.as_view(), name='edit'),
 
 	# Uncomment the admin/doc line below to enable admin documentation:
 	# url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

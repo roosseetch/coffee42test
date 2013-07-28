@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Edit Data Page{% endblock title %}
+
+{% block extrahead %}
+	{{ form.media }}
+{% endblock %}
+
+{% block content %}
+<div class="well well-small">
+<div class="page-header">
+<div class="col-lg-1">
+</div>
+  <h1>42 Coffee Cups Test Assignment <small>Edit Page</small></h1>
+</div>
+</div>
+
+<div class="container">
+	<div class="form-horizontal form-group row">
+		<div class="col-lg-2">
+			<!--Sidebar content begin-->
+			<ul class="list-unstyled">
+				<li><span class="glyphicon glyphicon-home"></span><a href="{% url 'home' %}"> Home</a></li>
+				<li><span class="glyphicon glyphicon-list-alt"></span><a href="{% url 'request' %}"> Requests Content</a></li>
+			</ul>
+			<!--Sidebar content end-->
+		</div>
+		<div class="col-lg-10">
+			<!--Body content begin-->
+			<form class="form-horizontal" enctype="multipart/form-data" action="{% url 'edit' 1 %}" method="post">
+				{% csrf_token %}
+						{% for field in form %}
+						<div class="form-group">
+							<label class="col-lg-2 control-label" ><strong>{{ field.label_tag }}</strong></label>
+							<div class="col-lg-10" >
+								{{ field }}
+							</div>
+							<label class="text-danger">{{ field.errors }}</label>
+						</div>
+						{% endfor %}
+						<div class="form-group">
+						<label class="col-lg-2 control-label" ></label>
+							<div class="col-lg-10">
+							{% if sir.photo %}
+								<img src="{{ sir.photo.url }}" class="img-thumbnail">
+							{% else %}
+								<img src="" class="img-thumbnail" alt="140&#215;140" >
+							{% endif %}
+						</div>
+						</div>
+				<div class="form-group" >
+						<label class="col-lg-2 control-label" ></label>
+					<div class="col-lg-10">
+							<button class="btn btn-small btn-primary" type="submit" >Save</button>
+							or <a href="#" onclick="history.go(-1);return false" >cancel</a>
+							<input type="hidden" name="next" value="{{ next }}" />
+					</div>
+				</div>
+			</form>
+			<div class="progress progress-striped active edit_contact_progress">
+				<div class="bar" ></div>
+			</div>
+			<!--Body content-->
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+
+{% block extrascripts %}
+
+{% endblock extrascripts %}
