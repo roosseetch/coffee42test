@@ -42,8 +42,17 @@ Also, post with first comment this links:
 Corresponding branch name:   t1_persona_data
 
 
-Ticket 2: (Merged to ticket 1)
-``````````````````````````````
+Ticket 2: Auth Add (Merged to ticket 5)
+--------------------------------------------
+
+**Add auth to the edit page**
+
+Add auth to the edit page implemented in #5
+
+**Change History**
+
+* Description modified (diff)
+* Summary changed from Додати авторизацію сторінки редагування даних to Add auth to the edit page.
 
 
 Ticket 3: Middleware
@@ -121,8 +130,19 @@ Mockup:  http://framebox.org/AMzD-BTbGcL
 * Summary changed from для дати народження на формі зробити widget календарика to For birth date on the same page add calendar widget.
 
 
-Ticket 7: (Merged to ticket 6)
-``````````````````````````````
+Ticket 7: Fields Reversed (Merged to ticket 5)
+----------------------------------------------
+
+**Let input fields order be reversed**
+
+All previous tasks where implemented using forms.ModelForm? ;)
+
+Mockup:  http://framebox.org/AMzU-FGMacl
+
+**Change History**
+
+* Description modified (diff)
+* Summary changed from зробити так, щоб порядок полів в формі інвертувався to Let input fields order be reversed.
 
 
 Ticket 8: Template Tags
