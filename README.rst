@@ -57,7 +57,7 @@ Mockup:  http://framebox.org/Awv-QVXKyN
 
 **Change History**
 
-* Summary changed from Зробити middleware що зберігає всі запити в базу to Зробити middleware що зберігає всі http запити в базу
+* Summary changed from Зробити middleware що зберігає всі http запити в базу to Create middleware that stores all http requests in the DB.
 
 Corresponding branch name:   t3_middleware
 
@@ -121,7 +121,7 @@ Ticket 7: (Merged to ticket 6)
 ``````````````````````````````
 
 
-Ticket 8: TemplateTags
+Ticket 8: Template Tags
 ----------------
 
 **Create tag that accepts any object and renders the link to its admin edit page**

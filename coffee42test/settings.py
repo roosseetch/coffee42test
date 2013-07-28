@@ -108,6 +108,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'apps.chamber.middleware.RequestContentMiddleware',
 )
 
 ROOT_URLCONF = 'coffee42test.urls'

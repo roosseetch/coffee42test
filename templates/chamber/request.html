@@ -4,15 +4,19 @@
 {% block title %}Requests Content{% endblock title %}
 
 {% block content %}
+<div class="well well-small">
 <div class="page-header">
-	<h1>42 Coffee Cups Test Assignment <small>Requests Page</small></h1>
+<div class="col-lg-1">
+</div>
+  <h1>42 Coffee Cups Test Assignment <small>Requests Page</small></h1>
+</div>
 </div>
 <div class="container">
 	<div class="form-horizontal form-group row">
 		<div class="col-lg-2">
 			<!--Sidebar content-->
-			<ul class="unstyled">
-				<li><i class="icon-home"></i><a href="{% url 'home' %}"> Home</a></li>
+			<ul class="list-unstyled">
+				<li><span class="glyphicon glyphicon-home"></span><a href="{% url 'home' %}"> Home</a></li>
 			</ul>
 			<!--Sidebar content-->
 		</div>
@@ -39,9 +43,7 @@
 				</tbody>
 			</table>
 			<p>
-				<a class="btn btn-primary btn-smalle" onclick="javascript:history.go(-1);">
-					Return to previous page</a>
-					{# <a class="btn btn-primary btn-smalle" href="/">Go to homepage</a> #}
+				<button type="button" class="btn btn-default btn-small" onclick="javascript:history.go(-1);">Return to previous page</button>
 				</p>
 				<!--Body content-->
 			</div>
