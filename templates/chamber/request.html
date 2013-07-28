@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Requests Content{% endblock title %}
+
+{% block content %}
+<div class="page-header">
+	<h1>42 Coffee Cups Test Assignment <small>Requests Page</small></h1>
+</div>
+<div class="container">
+	<div class="form-horizontal form-group row">
+		<div class="col-lg-2">
+			<!--Sidebar content-->
+			<ul class="unstyled">
+				<li><i class="icon-home"></i><a href="{% url 'home' %}"> Home</a></li>
+			</ul>
+			<!--Sidebar content-->
+		</div>
+		<div class="col-lg-10">
+			<!--Body content-->
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th>Method</th>
+						<th>Url</th>
+						<th>Status Code</th>
+						<th>Date&#38;Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for request in object_list %}
+					<tr>
+						<td>{{ request.method }}</td>
+						<td>{{ request.path }}</td>
+						<td>{{ request.status_code }}</td>
+						<td>{{ request.date }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<p>
+				<a class="btn btn-primary btn-smalle" onclick="javascript:history.go(-1);">
+					Return to previous page</a>
+					{# <a class="btn btn-primary btn-smalle" href="/">Go to homepage</a> #}
+				</p>
+				<!--Body content-->
+			</div>
+		</div>
+	</div>
+	{% endblock content %}

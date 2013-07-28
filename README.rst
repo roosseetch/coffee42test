@@ -39,7 +39,7 @@ Also, post with first comment this links:
 * Description modified (diff)
 * Summary changed from на головній сторінці вивести твої ім'я/фамілію/біо/контакти to show your name, surname, bio, contacts on the main page
 
-# Corresponding branch name:   t1_persona_data
+Corresponding branch name:   t1_persona_data
 
 
 Ticket 2: (Merged to ticket 1)
@@ -51,6 +51,7 @@ Ticket 3: Middleware
 **Create middleware that stores all http requests in the DB**
 
 Also, on a separate page show first 10 http requests that are stored by middleware
+
 Mockup:  http://framebox.org/Awv-QVXKyN
 
 **Change History**
