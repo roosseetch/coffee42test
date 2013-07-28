@@ -122,7 +122,7 @@ Ticket 7: (Merged to ticket 6)
 
 
 Ticket 8: Template Tags
-----------------
+-----------------------
 
 **Create tag that accepts any object and renders the link to its admin edit page**
 
@@ -134,3 +134,60 @@ Mockup:  http://framebox.org/AMZF-FNEhjy
 
 * Description modified (diff)
 * Summary changed from написати тег що приймає будь-який об'єкт та рендерить посилання на його редагування в адмінці to Create tag that accepts any object and renders the link to its admin edit page.
+
+
+
+Ticket 9: Bash Script
+---------------------
+
+**Create django command that prints all project models and the count of objects in every model**
+
+Also:
+
+* duplicate output to STDERR with prefix "error: "
+* write bash script which execute your command and save output of stderr into file. File name should be current date with extension .dat
+
+**Change History**
+
+* Summary changed from написати django команду що друкує всі моделі проекту і кількість об'єктів в кожній to Create django command that prints all project models and the count of objects in every model.
+
+
+Ticket 9: Signal Processor
+--------------------------
+
+**Create signal processor that, for every model, creates the db entry about the object creation/editing/deletion**
+
+**Change History**
+
+* Summary changed from написати обробник сигналу, який для кожної моделі створює запис в базі про її створення/редагування/видалення to Create signal processor that, for every model, creates the db entry about the object creation/editing/deletion.
+
+
+Ticket 10: (Merged)
+-------------------
+
+
+Ticket 11: (Merged)
+-------------------
+
+
+Ticket 12: (Merged)
+-------------------
+
+
+Ticket 13: Log Priority
+-----------------------
+
+**Your customer sends the change request. Task: understand what he needs and implement.**
+
+Customer's text::
+
+About requests log: we have to add a priortiy field,
+so we can show the different requests in the order we want.
+Priority 1 (or = 0) will be the standard selection.
+
+Task: understand what he needs and implement.
+
+**Change History**
+
+* Description modified (diff)
+* Summary changed from understanding - уявний замовник присилає запит на зміни. Завдання: зрозуміти, що він хоче бачити у результаті і реалізувати. to Your customer sends the change request. Task: understand what he needs and implement.
