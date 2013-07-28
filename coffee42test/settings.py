@@ -98,6 +98,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.media",
     "django.core.context_processors.static",
+    # coffe42cups specific
+    'apps.chamber.context_processors.coffee42test_settings_context',
 )
 
 MIDDLEWARE_CLASSES = (

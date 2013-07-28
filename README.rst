@@ -2,7 +2,7 @@
 42 Coffee Cups Test Assignment
 ====================================================
 
-Coffee42Test is examoles of solving assigments of 42 Coffee Cups company.
+Coffee42Test is examples of solving assigments of 42 Coffee Cups company.
 #57888 PO BOX 105603, Atlanta, GA 30348, USA
 
 .. Contents::
