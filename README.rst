@@ -181,9 +181,9 @@ Ticket 13: Log Priority
 
 Customer's text::
 
-About requests log: we have to add a priortiy field,
-so we can show the different requests in the order we want.
-Priority 1 (or = 0) will be the standard selection.
+	About requests log: we have to add a priortiy field,
+	so we can show the different requests in the order we want.
+	Priority 1 (or = 0) will be the standard selection.
 
 Task: understand what he needs and implement.
 
