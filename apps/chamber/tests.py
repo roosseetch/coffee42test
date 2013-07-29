@@ -1,4 +1,6 @@
 # -- coding: utf-8 --
+import unittest
+
 from django.test import TestCase
 from django.db.models import get_model
 from django.test.client import Client
@@ -7,12 +9,13 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 from .views import SirListView, RequestContetnView
+from .forms import SirUpdateForm
 
 
 Sir = get_model('chamber', 'Sir')
 RequestContent = get_model('chamber', 'RequestContent')
 
-usersir = User(pk=3)
+usersir = User(id=3)
 
 
 class SirModelTests(TestCase):
@@ -134,3 +137,34 @@ class MemberContextProcessorsTest(TestCase):
 		response = client.get('/')
 		self.assertEqual(response.context['coffee42test_settings'], settings)
 		self.assertIn('coffee42test_settings', response.context)
+
+
+class SirModelFormTests(unittest.TestCase):
+	'''
+	* Remember what Forms are for
+	* Testing strategies
+		- Initial states
+		- Field Validation
+		- Final state of cleaned_data
+	'''
+	def test_validation(self):
+		form_data = {
+			'name': 'Test Name',
+			'surname': 'Test SurName',
+			'bio': 'Test Name',
+			'date_birth': '2000-10-10',
+			'contact': 'Test Contact',
+			'photo': '',
+			'created_by_id': 1,
+		}
+
+		form = SirUpdateForm(data=form_data)
+		self.assertTrue(form.is_valid())
+		self.assertEqual(form.instance.name, 'Test Name')
+
+		form.save()
+
+		self.assertEqual(
+			Sir.objects.get(id=form.instance.id).name,
+			'Test Name'
+		)

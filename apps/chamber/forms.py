@@ -6,6 +6,16 @@ Sir = get_model('chamber', 'Sir')
 
 
 class SirForm(ModelForm):
+	'''
+	* ModelForms map a Model to a Form
+	* Validation includes Model validators by default
+	* Supports creating and editing instances
+	* Key differences from Forms:
+		- A field for the Primary Key (usually id)
+		- .save() method
+		- self.instance property
+	'''
+
 	class Meta:
 		model = Sir
 		# exclude = ('created_by',)

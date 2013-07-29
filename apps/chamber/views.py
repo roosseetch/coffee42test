@@ -23,6 +23,15 @@ class RequestContetnView(ListView):
 	template_name = 'chamber/request.html'
 
 class SirUpdateView(UpdateView):
+	'''
+	* ModelForms map a Model to a Form
+	* Validation includes Model validators by default
+	* Supports creating and editing instances
+	* Key differences from Forms:
+		- A field for the Primary Key (usually id)
+		- .save() method
+		- self.instance property
+	'''
 	model = Sir
 	form_class = SirUpdateForm
 	template_name = 'chamber/edit.html'
