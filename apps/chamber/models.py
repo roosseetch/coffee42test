@@ -17,7 +17,7 @@ class Sir(models.Model):
 	date_birth = models.DateField("Date of Birth")
 	contact = models.TextField('contact', max_length=255)
 	photo = models.ImageField(upload_to='photo', blank=True)
-	created_by = models.ForeignKey(AUTH_USER_MODEL)
+	created_by = models.ForeignKey(AUTH_USER_MODEL,default=10)
 
 	def __str__(self):
 		return ' '.join([self.name, self.surname])

@@ -15,7 +15,11 @@
 		<div class="col-lg-2">
 			<!--Sidebar content-->
 			<ul class="list-unstyled">
-				{# <li><i class="icon-user"></i><a href="{% url 'login' %}"><b> Login</b></a></li> #}
+				{% if user.is_authenticated %}
+				<li><span class="glyphicon glyphicon-user"></span><a href="{% url 'logout' %}"> <strong>Logout</strong></a></li>
+				{% else %}
+				<li><span class="glyphicon glyphicon-user"></span><a href="{% url 'login' %}"> <strong>Login</strong></a></li>
+				{% endif %}
 				<li><span class="glyphicon glyphicon-list-alt"></span><a href="{% url 'request' %}"> Requests Content</a></li>
 			</ul>
 			<!--Sidebar content-->

@@ -171,3 +171,10 @@ LOGGING = {
 
 
 # AUTH_USER_MODEL = 'user.Profile'
+
+
+LOGIN_URL = '/login/'
+
+LOGOUT_URL = '/'
+
+LOGIN_REDIRECT_URL = '/'

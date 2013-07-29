@@ -15,6 +15,7 @@ from .forms import SirUpdateForm
 Sir = get_model('chamber', 'Sir')
 RequestContent = get_model('chamber', 'RequestContent')
 
+# usersir = User(username="username", password="password", id=3)
 usersir = User(id=3)
 
 
@@ -120,7 +121,7 @@ class ChamberMiddlewareTests(TestCase):
 		self.assertTemplateUsed(response, 'chamber/request.html')
 
 
-class MemberContextProcessorsTest(TestCase):
+class MemberContextProcessorsTests(TestCase):
 
 	def test_if_settings_in_context(self):
 		"""
@@ -154,8 +155,8 @@ class SirModelFormTests(unittest.TestCase):
 			'bio': 'Test Name',
 			'date_birth': '2000-10-10',
 			'contact': 'Test Contact',
-			'photo': '',
-			'created_by_id': 1,
+			# 'photo': '',
+			# 'created_by': 3,
 		}
 
 		form = SirUpdateForm(data=form_data)
@@ -168,3 +169,23 @@ class SirModelFormTests(unittest.TestCase):
 			Sir.objects.get(id=form.instance.id).name,
 			'Test Name'
 		)
+
+
+class SirFormEditTests(TestCase):
+
+	# def login_test(self):
+	# 	factory = RequestFactory()
+	# 	request = factory.get('/edit/1')
+
+	# 	response = SirListView.as_view()(request)
+	# 	self.assertEqual(response.status_code, 200)
+	# 	self.assertContains(response, '<small>Edit Page</small></h1>')
+	# 	self.assertTemplateUsed(response, 'chamber/edit.html')
+
+	def login_test(self):
+		client = Client()
+		self.assertTrue(client.login(username='rosseetch', password='test'))
+		# response = client.get('/edit/1')
+		# self.assertEqual(response.status_code, 200)
+		# self.assertContains(response, '<small>Edit Page</small></h1>')
+		# self.assertTemplateUsed(response, 'chamber/edit.html')

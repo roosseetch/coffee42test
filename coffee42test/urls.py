@@ -18,6 +18,8 @@ urlpatterns = patterns('',
 	url(r'^$', SirListView.as_view(), name='home'),
 	url(r'^request/$', RequestContetnView.as_view(), name='request'),
 	url(r'^edit/(?P<pk>\d+)/$', SirUpdateView.as_view(), name='edit'),
+	url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'chamber/login.html'}, name='login'),
+	url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': settings.LOGOUT_URL}, name='logout'),
 
 	# Uncomment the admin/doc line below to enable admin documentation:
 	# url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

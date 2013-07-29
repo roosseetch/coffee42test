@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
 
 {% block title %}Requests Content{% endblock title %}
 
@@ -16,6 +15,11 @@
 		<div class="col-lg-2">
 			<!--Sidebar content-->
 			<ul class="list-unstyled">
+				{% if user.is_authenticated %}
+				<li><span class="glyphicon glyphicon-user"></span><a href="{% url 'logout' %}"> <strong>Logout</strong></a></li>
+				{% else %}
+				<li><span class="glyphicon glyphicon-user"></span><a href="{% url 'login' %}"> <strong>Login</strong></a></li>
+				{% endif %}
 				<li><span class="glyphicon glyphicon-home"></span><a href="{% url 'home' %}"> Home</a></li>
 			</ul>
 			<!--Sidebar content-->
