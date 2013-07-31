@@ -5,8 +5,10 @@ from django.test import TestCase
 from django.db.models import get_model
 from django.test.client import Client
 from django.test.client import RequestFactory
+from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib import auth
 
 from .views import SirListView, RequestContetnView
 from .forms import SirUpdateForm
@@ -115,7 +117,7 @@ class ChamberMiddlewareTests(TestCase):
 		Tests if successful HTTP requests to needed page
 		"""
 		client = Client()
-		response = client.get('/request/')
+		response = client.get(reverse('request'))
 		self.assertEqual(response.status_code, 200)
 		self.assertContains(response, '<small>Requests Page</small></h1>')
 		self.assertTemplateUsed(response, 'chamber/request.html')
@@ -135,7 +137,7 @@ class MemberContextProcessorsTests(TestCase):
 		# self.assertIn('coffee42test_settings', response.context_data)
 
 		client = Client()
-		response = client.get('/')
+		response = client.get(reverse('home'))
 		self.assertEqual(response.context['coffee42test_settings'], settings)
 		self.assertIn('coffee42test_settings', response.context)
 
@@ -172,20 +174,53 @@ class SirModelFormTests(unittest.TestCase):
 
 
 class SirFormEditTests(TestCase):
+	fixtures = ['sir.json']
 
-	# def login_test(self):
-	# 	factory = RequestFactory()
-	# 	request = factory.get('/edit/1')
+	def setUp(self):
+		# Every test needs access to the request factory.
+		self.factory = RequestFactory()
 
-	# 	response = SirListView.as_view()(request)
-	# 	self.assertEqual(response.status_code, 200)
-	# 	self.assertContains(response, '<small>Edit Page</small></h1>')
-	# 	self.assertTemplateUsed(response, 'chamber/edit.html')
+	def test_fixture_user(self):
+		"""
+		Testing if fixture user exist
+		"""
+		self.assertTrue(self.client.login(username='roosseetch', password='test'))
 
-	def login_test(self):
-		client = Client()
-		self.assertTrue(client.login(username='rosseetch', password='test'))
-		# response = client.get('/edit/1')
-		# self.assertEqual(response.status_code, 200)
-		# self.assertContains(response, '<small>Edit Page</small></h1>')
-		# self.assertTemplateUsed(response, 'chamber/edit.html')
+	def login_factory_test(self):
+		# Create an instance of a GET request.
+		request = self.factory.get(reverse('login'))
+
+		# Test my_view() as if it were deployed at /customer/details
+		response = auth.views.login(request)
+		self.assertEqual(response.status_code, 200)
+		self.assertContains(response, '<small>Login Page</small></h1>')
+		self.assertTemplateUsed(response, 'chamber/login.html')
+
+
+	def test_edit_login(self):
+		self.client.logout()
+		response = self.client.get(reverse('edit', kwargs={'pk': 1}))
+		expected_url = reverse('login') + '?next=' + reverse('edit', kwargs={'pk': 1})
+		self.assertRedirects(response, expected_url, target_status_code=200)
+		response = self.client.post(reverse('login'), data={'username': 'roosseetch', 'password':'test'})
+		self.assertEqual(response.status_code, 302)
+		response = self.client.get(reverse('edit', kwargs={'pk': 1}))
+		self.assertTemplateUsed(response, 'chamber/edit.html')
+		self.assertContains(response, '<small>Edit Page</small></h1>')
+
+	def test_edit_page(self):
+		"""
+		Tests that login url redirects properly and allow to log in
+		"""
+		# client = Client()
+		self.client.login(username='roosseetch', password='test')
+		response = self.client.get(reverse('edit', kwargs={'pk': 1}))
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'chamber/edit.html')
+		self.assertContains(response, '<small>Edit Page</small></h1>')
+		self.assertIn('form', response.context)
+		form = response.context['form']
+		sir = Sir.objects.get(pk=1)
+		self.assertEqual(sir, form.instance)
+
+	# 	client.logout()
