@@ -1,6 +1,7 @@
 # -- coding: utf-8 --
 from django.forms import ModelForm
 from django.db.models import get_model
+from apps.chamber.widgets import DateWidget
 
 Sir = get_model('chamber', 'Sir')
 
@@ -18,9 +19,24 @@ class SirForm(ModelForm):
 
 	class Meta:
 		model = Sir
-		# exclude = ('created_by',)
+
 		# show all the fields!
+		# exclude = ('created_by',)
 		fields = ["name", "surname", "date_birth", "contact", "bio", "photo"]
+
+		dateTimeOptions = {
+		'format': 'yyyy-mm-dd',
+		'autoclose': 'true',
+		'showMeridian' : 'false',
+		'startDate' : '1950-1-1',
+		'endDate' : '2014-1-1',
+		'startView' : '4',
+		'minView' : '2',
+		}
+
+		widgets = {
+				'date_birth': DateWidget(attrs={'id':"calendar"}, options = dateTimeOptions)
+			}
 
 
 class SirUpdateForm(ModelForm):
